@@ -20,7 +20,8 @@
 
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 
-
+  <!-- 繁體中文 3D 文字渲染套件 -->
+  <script src="https://unpkg.com/aframe-troika-text/dist/aframe-troika-text.min.js"></script>
 
   <style>
 
@@ -106,62 +107,11 @@
 
     <a-entity mindar-image-target="targetIndex: 0">
 
-    <!-- 1. 雷射主要主幹光束 (Laser Beam - 傾斜貫穿光路) -->
-  <a-cylinder
-    position="0.05 0.10 0.25"
-    rotation="-15 -25 75"
-    radius="0.018"
-    height="1.2"
-    color="#00ff66"
-    material="shader: flat; transparent: true; opacity: 0.85;"
-    animation__pulse="
-      property: material.opacity;
-      from: 0.4;
-      to: 1.0;
-      dur: 800;
-      loop: true;
-      dir: alternate
-    "
-  >
-  </a-cylinder>
-
-  <!-- 2. 立方體腔體 Cubic Chamber (P1/P2 氣體區) -->
-  <a-box
-    position="0.20 0.18 0.25"
-    rotation="10 -20 0"
-    width="0.22"
-    height="0.22"
-    depth="0.22"
-    color="#e6995c"
-    material="transparent: true; opacity: 0.45;"
-  >
-  </a-box>
-
-  <!-- 3. 微透鏡陣列 MLA (取代原本多餘的圓環) -->
-  <a-plane
-    position="0.38 0.23 0.26"
-    rotation="0 -25 0"
-    width="0.12"
-    height="0.12"
-    color="#cccccc"
-    material="transparent: true; opacity: 0.7; side: double; wireframe: true;"
-  >
-  </a-plane>
-
-  <!-- 4. CCD 感光相機 (接收端) -->
-  <a-box
-    position="0.48 0.26 0.26"
-    rotation="0 -25 0"
-    width="0.10"
-    height="0.12"
-    depth="0.12"
-    color="#333333"
-  >
-  </a-box>
+  
 
   <!-- 5. 說明文字：主標題 -->
   <a-text
-    value="SEE GAS WITH LIGHT"
+    value="GAS Sensor"
     position="0 0.55 0.30"
     align="center"
     color="#ffffff"
@@ -173,26 +123,6 @@
       dur: 900;
       easing: easeOutQuad
     "
-  >
-  </a-text>
-
-  <!-- 6. 標籤文字：Cubic Chamber -->
-  <a-text
-    value="Cubic Chamber"
-    position="0.20 0.35 0.28"
-    align="center"
-    color="#ffcc99"
-    width="1.6"
-  >
-  </a-text>
-
-  <!-- 7. 標籤文字：CCD / MLA -->
-  <a-text
-    value="MLA + CCD"
-    position="0.48 0.36 0.28"
-    align="center"
-    color="#66ffcc"
-    width="1.5"
   >
   </a-text>
 
