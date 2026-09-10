@@ -20,9 +20,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 
-  <!-- 繁體中文 3D 文字渲染套件 -->
-  <script src="https://unpkg.com/aframe-troika-text/dist/aframe-troika-text.min.js"></script>
-
+ 
   <style>
 
     body {
@@ -67,7 +65,41 @@
     }
 
   </style>
+<!-- 自動動態產生中文貼圖的腳本 -->
+  <script>
+    AFRAME.registerComponent('chinese-text', {
+      schema: {
+        text: {type: 'string', default: ''},
+        color: {type: 'string', default: '#ffffff'},
+        size: {type: 'number', default: 48}
+      },
+      init: function () {
+        const canvas = document.createElement('canvas');
+        canvas.width = 1024;
+        canvas.height = 256;
+        const ctx = canvas.getContext('2d');
+        
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.font = `Bold ${this.data.size}px "Microsoft JhengHei", "PingFang TC", sans-serif`;
+        ctx.fillStyle = this.data.color;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(this.data.text, canvas.width / 2, canvas.height / 2);
 
+        const texture = new THREE.CanvasTexture(canvas);
+        const material = new THREE.MeshBasicMaterial({
+          map: texture,
+          transparent: true,
+          side: THREE.DoubleSide
+        });
+        
+        const mesh = this.el.getObject3D('mesh');
+        if (mesh) {
+          mesh.material = material;
+        }
+      }
+    });
+  </script>  
 </head>
 
 
@@ -76,7 +108,7 @@
 
   <div id="info">
 
-    Scan the card to see our technology
+    Scan the card to see novelty
 
   </div>
 
@@ -130,10 +162,10 @@
  <a-troika-text
     value="即時量測  |  非破壞性  |  無需分光儀"
     position="0 -0.20 0.25"
-    font="https://fonts.gstatic.com/s/notosanstc/v35/-F633ojptA9503386s1b633pv94X433m.woff"
-    font-size="0.09"
-    color="#66ffcc"
-    align="center"
+    width="1.8"
+    height="0.45"
+    material="transparent: true; opacity: 0;"
+    chinese-text="text: 即時量測 | 非破壞性 | 無需分光儀; color: #66ffcc; size: 40;" 
   >
   </a-troika-text>
       
