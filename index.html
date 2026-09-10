@@ -83,8 +83,7 @@
 
   <a-scene
 
-    mindar-image="imageTargetSrc: ./targets.mind;"
-
+    mindar-image="imageTargetSrc: ./targets.mind; autoStart: true; filterMinCF: 0.0001; filterBeta: 0.001;"
     embedded
 
     color-space="sRGB"
@@ -109,7 +108,7 @@
 
     <!-- Laser beam -->
       <a-cylinder
-        position="-0.15 0.15 0.15"
+        position="-0.15 0.15 0.25"
         rotation="0 0 90"
         radius="0.025"
         height="0.75"
@@ -117,9 +116,9 @@
         material="shader: flat; transparent: true; opacity: 0.9;"
         animation__pulse="
           property: material.opacity;
-          from: 0.3;
+          from: 0.4;
           to: 1.0;
-          dur: 700;
+          dur: 800;
           loop: true;
           dir: alternate
         "
