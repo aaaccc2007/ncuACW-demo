@@ -107,14 +107,99 @@
 
     <a-entity mindar-image-target="targetIndex: 0">
 
-     <!-- 顯眼的亮綠色測試方塊 (自帶 flat shader 不受燈光影響) -->
+    <!-- Laser beam -->
+      <a-cylinder
+        position="-0.15 0.15 0.15"
+        rotation="0 0 90"
+        radius="0.025"
+        height="0.75"
+        color="#00ff66"
+        material="shader: flat; transparent: true; opacity: 0.9;"
+        animation__pulse="
+          property: material.opacity;
+          from: 0.3;
+          to: 1.0;
+          dur: 700;
+          loop: true;
+          dir: alternate
+        "
+      >
+      </a-cylinder>
+
+      <!-- Gas chamber -->
       <a-box
-        position="0 0 0.1"
-        scale="0.4 0.4 0.4"
-        material="color: #00ff00; shader: flat;"
+        position="0.25 0.15 0.12"
+        width="0.35"
+        height="0.30"
+        depth="0.06"
+        color="#66ccff"
+        material="transparent: true; opacity: 0.35;"
       >
       </a-box>
 
+      <!-- Gas label -->
+      <a-text
+        value="GAS"
+        position="0.25 0.15 0.18"
+        align="center"
+        color="white"
+        width="1.5"
+      >
+      </a-text>
+
+      <!-- Wavefront sensor -->
+      <a-ring
+        position="0.65 0.15 0.16"
+        radius-inner="0.08"
+        radius-outer="0.12"
+        color="#00ff66"
+        material="shader: flat;"
+        animation="
+          property: rotation;
+          to: 0 0 360;
+          dur: 1800;
+          loop: true;
+          easing: linear
+        "
+      >
+      </a-ring>
+
+      <a-text
+        value="WAVEFRONT"
+        position="0.65 -0.02 0.18"
+        align="center"
+        color="white"
+        width="1.5"
+      >
+      </a-text>
+
+      <!-- Main message -->
+      <a-text
+        value="SEE GAS WITH LIGHT"
+        position="0 0.55 0.20"
+        align="center"
+        color="#ffffff"
+        width="2.8"
+        animation="
+          property: position;
+          from: 0 0.45 0.20;
+          to: 0 0.55 0.20;
+          dur: 900;
+          easing: easeOutQuad
+        "
+      >
+      </a-text>
+
+      <!-- Subtitle -->
+      <a-text
+        value="Real-time  |  Non-invasive  |  No Spectrometer"
+        position="0 -0.50 0.20"
+        align="center"
+        color="#66ffcc"
+        width="1.8"
+      >
+      </a-text>
+      
 
     </a-entity>
 
