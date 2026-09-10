@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta</p>
+<p class="p1"><span class="Apple-converted-space">    </span>name="viewport"</p>
+<p class="p1"><span class="Apple-converted-space">    </span>content="width=device-width,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>initial-scale=1.0,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>maximum-scale=1.0,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>user-scalable=no"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;NCU Wavefront Gas Measurement&lt;/title&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- A-Frame --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://aframe.io/releases/1.5.0/aframe.min.js"&gt;&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- MindAR --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"&gt;&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>#info {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position: fixed;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>top: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>left: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: Arial, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>z-index: 10;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-shadow: 0 1px 4px #000;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>pointer-events: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="info"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>Scan the card to see our technology</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;a-scene</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>mindar-image="</p>
+<p class="p1"><span class="Apple-converted-space">      </span>imageTargetSrc: ./targets.mind;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>embedded</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>color-space="sRGB"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>renderer="</p>
+<p class="p1"><span class="Apple-converted-space">      </span>colorManagement: true,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>physicallyCorrectLights</p>
+<p class="p1"><span class="Apple-converted-space">    </span>"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>vr-mode-ui="enabled: false"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>device-orientation-permission-ui="enabled: false"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Camera --&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a-camera</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position="0 0 0"</p>
+<p class="p1"><span class="Apple-converted-space">      </span>look-controls="enabled: false"</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/a-camera&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- AR content --&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a-entity</p>
+<p class="p1"><span class="Apple-converted-space">      </span>mindar-image-target="targetIndex: 0"</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- ====================== --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- Laser beam<span class="Apple-converted-space">              </span>--&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- ====================== --&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a-cylinder</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>position="-0.15 0.15 0.15"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>rotation="0 0 90"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>radius="0.025"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>height="0.75"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>color="#00ff66"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>opacity="0.9"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>animation__pulse="</p>
+<p class="p1"><span class="Apple-converted-space">          </span>property: opacity;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>from: 0.3;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>to: 1;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>dur: 700;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>loop: true;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>dir: alternate</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/a-cylinder&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- ====================== --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- Gas chamber <span class="Apple-converted-space">            </span>--&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- ====================== --&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a-box</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>position="0.25 0.15 0.12"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>width="0.35"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>height="0.30"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>depth="0.06"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>color="#66ccff"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>opacity="0.35"</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/a-box&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- Gas label --&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a-text</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>value="GAS"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>position="0.25 0.15 0.18"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>align="center"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>color="white"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>width="1.5"</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/a-text&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- ====================== --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- Wavefront sensor<span class="Apple-converted-space">        </span>--&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- ====================== --&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a-ring</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>position="0.65 0.15 0.16"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>radius-inner="0.08"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>radius-outer="0.12"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>color="#00ff66"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>animation="</p>
+<p class="p1"><span class="Apple-converted-space">          </span>property: rotation;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>to: 0 0 360;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>dur: 1800;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>loop: true;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>easing: linear</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/a-ring&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a-text</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>value="WAVEFRONT"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>position="0.65 -0.02 0.18"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>align="center"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>color="white"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>width="1.5"</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/a-text&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- ====================== --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- Main message<span class="Apple-converted-space">            </span>--&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- ====================== --&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a-text</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>value="SEE GAS WITH LIGHT"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>position="0 0.55 0.20"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>align="center"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>color="#ffffff"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>width="2.8"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>animation="</p>
+<p class="p1"><span class="Apple-converted-space">          </span>property: position;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>from: 0 0.45 0.20;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>to: 0 0.55 0.20;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>dur: 900;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>easing: easeOutQuad</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/a-text&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- ====================== --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- Subtitle<span class="Apple-converted-space">                </span>--&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- ====================== --&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a-text</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>value="Real-time<span class="Apple-converted-space">  </span>|<span class="Apple-converted-space">  </span>Non-invasive<span class="Apple-converted-space">  </span>|<span class="Apple-converted-space">  </span>No Spectrometer"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>position="0 -0.50 0.20"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>align="center"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>color="#66ffcc"</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>width="1.8"</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/a-text&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/a-entity&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/a-scene&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
