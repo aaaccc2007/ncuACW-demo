@@ -106,98 +106,105 @@
 
     <a-entity mindar-image-target="targetIndex: 0">
 
-    <!-- Laser beam -->
-      <a-cylinder
-        position="-0.15 0.15 0.25"
-        rotation="0 0 90"
-        radius="0.025"
-        height="0.75"
-        color="#00ff66"
-        material="shader: flat; transparent: true; opacity: 0.9;"
-        animation__pulse="
-          property: material.opacity;
-          from: 0.4;
-          to: 1.0;
-          dur: 800;
-          loop: true;
-          dir: alternate
-        "
-      >
-      </a-cylinder>
+    <!-- 1. 雷射主要主幹光束 (Laser Beam - 傾斜貫穿光路) -->
+  <a-cylinder
+    position="0.05 0.10 0.25"
+    rotation="-15 -25 75"
+    radius="0.018"
+    height="1.2"
+    color="#00ff66"
+    material="shader: flat; transparent: true; opacity: 0.85;"
+    animation__pulse="
+      property: material.opacity;
+      from: 0.4;
+      to: 1.0;
+      dur: 800;
+      loop: true;
+      dir: alternate
+    "
+  >
+  </a-cylinder>
 
-      <!-- Gas chamber -->
-      <a-box
-        position="0.25 0.15 0.12"
-        width="0.35"
-        height="0.30"
-        depth="0.06"
-        color="#66ccff"
-        material="transparent: true; opacity: 0.35;"
-      >
-      </a-box>
+  <!-- 2. 立方體腔體 Cubic Chamber (P1/P2 氣體區) -->
+  <a-box
+    position="0.20 0.18 0.25"
+    rotation="10 -20 0"
+    width="0.22"
+    height="0.22"
+    depth="0.22"
+    color="#e6995c"
+    material="transparent: true; opacity: 0.45;"
+  >
+  </a-box>
 
-      <!-- Gas label -->
-      <a-text
-        value="GAS"
-        position="0.25 0.15 0.18"
-        align="center"
-        color="white"
-        width="1.5"
-      >
-      </a-text>
+  <!-- 3. 微透鏡陣列 MLA (取代原本多餘的圓環) -->
+  <a-plane
+    position="0.38 0.23 0.26"
+    rotation="0 -25 0"
+    width="0.12"
+    height="0.12"
+    color="#cccccc"
+    material="transparent: true; opacity: 0.7; side: double; wireframe: true;"
+  >
+  </a-plane>
 
-      <!-- Wavefront sensor -->
-      <a-ring
-        position="0.65 0.15 0.16"
-        radius-inner="0.08"
-        radius-outer="0.12"
-        color="#00ff66"
-        material="shader: flat;"
-        animation="
-          property: rotation;
-          to: 0 0 360;
-          dur: 1800;
-          loop: true;
-          easing: linear
-        "
-      >
-      </a-ring>
+  <!-- 4. CCD 感光相機 (接收端) -->
+  <a-box
+    position="0.48 0.26 0.26"
+    rotation="0 -25 0"
+    width="0.10"
+    height="0.12"
+    depth="0.12"
+    color="#333333"
+  >
+  </a-box>
 
-      <a-text
-        value="WAVEFRONT"
-        position="0.65 -0.02 0.18"
-        align="center"
-        color="white"
-        width="1.5"
-      >
-      </a-text>
+  <!-- 5. 說明文字：主標題 -->
+  <a-text
+    value="SEE GAS WITH LIGHT"
+    position="0 0.55 0.30"
+    align="center"
+    color="#ffffff"
+    width="2.8"
+    animation="
+      property: position;
+      from: 0 0.45 0.30;
+      to: 0 0.55 0.30;
+      dur: 900;
+      easing: easeOutQuad
+    "
+  >
+  </a-text>
 
-      <!-- Main message -->
-      <a-text
-        value="SEE GAS WITH LIGHT"
-        position="0 0.55 0.20"
-        align="center"
-        color="#ffffff"
-        width="2.8"
-        animation="
-          property: position;
-          from: 0 0.45 0.20;
-          to: 0 0.55 0.20;
-          dur: 900;
-          easing: easeOutQuad
-        "
-      >
-      </a-text>
+  <!-- 6. 標籤文字：Cubic Chamber -->
+  <a-text
+    value="Cubic Chamber"
+    position="0.20 0.35 0.28"
+    align="center"
+    color="#ffcc99"
+    width="1.6"
+  >
+  </a-text>
 
-      <!-- Subtitle -->
-      <a-text
-        value="Real-time  |  Non-invasive  |  No Spectrometer"
-        position="0 -0.50 0.20"
-        align="center"
-        color="#66ffcc"
-        width="1.8"
-      >
-      </a-text>
+  <!-- 7. 標籤文字：CCD / MLA -->
+  <a-text
+    value="MLA + CCD"
+    position="0.48 0.36 0.28"
+    align="center"
+    color="#66ffcc"
+    width="1.5"
+  >
+  </a-text>
+
+  <!-- 8. 副標題 -->
+  <a-text
+    value="即時檢測 | 非侵入式 | 無需光譜儀"
+    position="0 -0.45 0.30"
+    align="center"
+    color="#66ffcc"
+    width="1.8"
+  >
+  </a-text>
       
 
     </a-entity>
