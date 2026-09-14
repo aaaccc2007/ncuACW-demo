@@ -59,10 +59,6 @@
       pointer-events: none;
 
     }
-    /* 強制將 WebGL 3D 渲染層設定在相機畫面上方 */
-    .a-canvas {
-      z-index: 2 !important;
-    }
 
   </style>
 <!-- 自動動態產生中文貼圖的腳本 -->
@@ -166,17 +162,16 @@
   </a-text>
 
   <!-- 8. 副標題 -->
- <a-troika-text
-    value="即時量測  |  非破壞性  |  無需分光儀"
+ <a-entity
     position="0 -0.20 0.25"
     width="1.8"
     height="0.45"
     material="transparent: true; opacity: 0;"
     chinese-text="text: 即時量測 | 非破壞性 | 無需分光儀; color: #66ffcc; size: 40;" 
   >
-  </a-troika-text>
+  </a-entity>
       
-    </a-entity>
+  </a-entity>
 
   </a-scene>
 
