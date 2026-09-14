@@ -57,17 +57,25 @@
       text-shadow: 0 1px 4px #000;
 
       pointer-events: none;
-
     }
-
+/* 防止相機畫面閃爍與層級錯亂 */
+    video {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      z-index: -1 !important;
+    }
   </style>
-<!-- 自動動態產生中文貼圖的腳本 -->
+ <!-- 中文字體動態繪製組件 -->
   <script>
     AFRAME.registerComponent('chinese-text', {
       schema: {
         text: {type: 'string', default: ''},
         color: {type: 'string', default: '#ffffff'},
-        size: {type: 'number', default: 48}
+        size: {type: 'number', default: 50}
       },
       init: function () {
         const canvas = document.createElement('canvas');
@@ -83,23 +91,24 @@
         ctx.fillText(this.data.text, canvas.width / 2, canvas.height / 2);
 
         const texture = new THREE.CanvasTexture(canvas);
+        texture.minFilter = THREE.LinearFilter;
+        
         const material = new THREE.MeshBasicMaterial({
           map: texture,
           transparent: true,
-          side: THREE.DoubleSide
+          side: THREE.DoubleSide,
+          depthTest: true,
+          depthWrite: false
         });
-        
-        const mesh = this.el.getObject3D('mesh');
-        if (mesh) {
-          mesh.material = material;
-        }
+
+        // 獨立建立 Plane Geometry 避免閃爍與貼圖遺失
+        const geometry = new THREE.PlaneGeometry(1.8, 0.45);
+        const mesh = new THREE.Mesh(geometry, material);
+        this.el.setObject3D('mesh', mesh);
       }
     });
   </script>  
 </head>
-
-
-
 <body>
 
   <div id="info">
@@ -163,11 +172,8 @@
 
   <!-- 8. 副標題 -->
  <a-entity
-    position="0 -0.20 0.25"
-    width="1.8"
-    height="0.45"
-    material="transparent: true; opacity: 0;"
-    chinese-text="text: 即時量測 | 非破壞性 | 無需分光儀; color: #66ffcc; size: 40;" 
+    position="0 -0.20 0.1"
+    chinese-text="text: 即時量測 | 非破壞性 | 無需分光儀; color: #66ffcc; size: 44;" 
   >
   </a-entity>
       
