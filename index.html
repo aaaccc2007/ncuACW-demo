@@ -1,30 +1,17 @@
 <!DOCTYPE html>
-
-<html lang="en">
-
+<html lang="zh-TW">
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
   <title>NCU Wavefront Gas Measurement</title>
 
-
-
   <!-- A-Frame -->
-
   <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-
   <!-- MindAR -->
-
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 
- 
   <style>
-
     body {
-
       position: absolute;
       top: 0;
       left: 0;
@@ -35,30 +22,20 @@
     }
 
     #info {
-
       position: fixed;
-
       top: 20px;
-
       left: 0;
-
       width: 100%;
-
       text-align: center;
-
       color: white;
-
       font-family: Arial, sans-serif;
-
       font-size: 18px;
-
       z-index: 10;
-
       text-shadow: 0 1px 4px #000;
-
       pointer-events: none;
     }
-/* 防止相機畫面閃爍與層級錯亂 */
+
+    /* 強制相機畫面置底，防止層級錯亂 */
     video {
       position: absolute !important;
       top: 0 !important;
@@ -69,13 +46,17 @@
       z-index: -1 !important;
     }
   </style>
- <!-- 中文字體動態繪製組件 -->
+
+  <!-- 防閃爍 Canvas 文字組件 -->
   <script>
-    AFRAME.registerComponent('chinese-text', {
+    AFRAME.registerComponent('custom-text', {
       schema: {
         text: {type: 'string', default: ''},
         color: {type: 'string', default: '#ffffff'},
-        size: {type: 'number', default: 50}
+        size: {type: 'number', default: 50},
+        font: {type: 'string', default: 'Arial'},
+        width: {type: 'number', default: 1.8},
+        height: {type: 'number', default: 0.45}
       },
       init: function () {
         const canvas = document.createElement('canvas');
@@ -84,7 +65,7 @@
         const ctx = canvas.getContext('2d');
         
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.font = `Bold ${this.data.size}px "Microsoft JhengHei", "PingFang TC", sans-serif`;
+        ctx.font = `Bold ${this.data.size}px ${this.data.font}, sans-serif`;
         ctx.fillStyle = this.data.color;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
@@ -93,94 +74,79 @@
         const texture = new THREE.CanvasTexture(canvas);
         texture.minFilter = THREE.LinearFilter;
         
+        // 關閉 depthWrite 並開啟 alphaTest，徹底防止 Z-fighting 閃爍
         const material = new THREE.MeshBasicMaterial({
           map: texture,
           transparent: true,
+          alphaTest: 0.1,
           side: THREE.DoubleSide,
-          depthTest: true,
+          depthTest: false,
           depthWrite: false
         });
 
-        // 獨立建立 Plane Geometry 避免閃爍與貼圖遺失
-        const geometry = new THREE.PlaneGeometry(1.8, 0.45);
+        const geometry = new THREE.PlaneGeometry(this.data.width, this.data.height);
         const mesh = new THREE.Mesh(geometry, material);
+        mesh.renderOrder = 999; // 強制將渲染順序置頂
         this.el.setObject3D('mesh', mesh);
       }
     });
   </script>  
 </head>
+
 <body>
 
   <div id="info">
-
     please Scan the Figure on card
-
   </div>
 
-
-
+  <!-- renderer 加上 logarithmicDepthBuffer: true -->
   <a-scene
-
-   mindar-image="
-    imageTargetSrc: ./targets.mind;
-    autoStart: true;
-
-    uiLoading: yes;
-    uiScanning: yes;
-    uiError: yes;
-  "
-  embedded
-
+    mindar-image="
+      imageTargetSrc: ./targets.mind;
+      autoStart: true;
+      uiLoading: yes;
+      uiScanning: yes;
+      uiError: yes;
+      filterMinCF: 0.0001;
+      filterBeta: 0.001;
+    "
+    embedded
     color-space="sRGB"
-
-    renderer="colorManagement: true, physicallyCorrectLights"
-
+    renderer="colorManagement: true; physicallyCorrectLights: true; logarithmicDepthBuffer: true; precision: mediump;"
     vr-mode-ui="enabled: false"
-
     device-orientation-permission-ui="enabled: false"
-
   >
 
     <!-- Camera -->
-
     <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-
-
-    <!-- AR content -->
-
+    <!-- AR Content -->
     <a-entity mindar-image-target="targetIndex: 0">
 
-  
+      <!-- 1. 主標題：GAS Sensor（改用自訂防閃爍組件） -->
+      <a-entity
+        position="0 0.55 0.1"
+        custom-text="text: GAS Sensor; color: #ffffff; size: 80; font: Arial; width: 2.2; height: 0.55;"
+        animation="
+          property: position;
+          from: 0 0.45 0.1;
+          to: 0 0.55 0.1;
+          dur: 900;
+          easing: easeOutQuad
+        "
+      >
+      </a-entity>
 
-  <!-- 5. 說明文字：主標題 -->
-  <a-text
-    value="GAS Sensor"
-    position="0 0.55 0.30"
-    align="center"
-    color="#ffffff"
-    width="2.8"
-    animation="
-      property: position;
-      from: 0 0.45 0.30;
-      to: 0 0.55 0.30;
-      dur: 900;
-      easing: easeOutQuad
-    "
-  >
-  </a-text>
-
-  <!-- 8. 副標題 -->
- <a-entity
-    position="0 -0.20 0.1"
-    chinese-text="text: 即時量測 | 非破壞性 | 無需分光儀; color: #66ffcc; size: 44;" 
-  >
-  </a-entity>
-      
-  </a-entity>
+      <!-- 2. 副標題：中文規格描述 -->
+      <a-entity
+        position="0 -0.20 0.1"
+        custom-text="text: 即時量測 | 非破壞性 | 無需分光儀; color: #66ffcc; size: 44; font: 'Microsoft JhengHei', 'PingFang TC'; width: 1.8; height: 0.45;" 
+      >
+      </a-entity>
+        
+    </a-entity>
 
   </a-scene>
 
 </body>
-
 </html>
